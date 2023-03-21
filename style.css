@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500&family=Varela+Round&display=swap');
+
+body{
+    background-color:rgb(112, 231, 112);
+}
+*{
+    margin:0;
+    padding:0;
+}
+nav{
+    font-family : 'Ubuntu', sans-serif;
+    position: sticky;
+    top:0px;
+}
+nav ul{
+    display:flex;
+    list-style-type:none;
+    background-color:black;
+    color:white;
+    height:70px;
+    align-items:center;
+}
+nav ul li{
+    padding:0px 8px;
+    cursor:pointer;
+    
+}
+.brand img{
+    width:50px;
+    padding: 0px 8px;
+}
+.brand{
+    display: flex;
+    align-items: center;
+    font-weight:bold;
+    justify-content: center;
+    font-size: 25px;
+}
+.container{
+    background:url('pics/LM1.png') no-repeat center center /cover ;
+    min-height:63vh;
+    background-color: black;
+    color:white;
+    font-family:'Varela Round', sans-serif;
+    display:flex;
+    width:70%;
+    margin:23px auto;
+    border-radius: 12px;
+    padding:34px;
+    align-items: center;
+    justify-content: center;
+}
+.bottom{
+    position: sticky;
+    height:125px;
+    background-color: black;
+    bottom:0px;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    color:white;
+    flex-direction:column;
+  
+}
+.icons{
+    margin-top:14px;
+}
+.icons i{
+    cursor:pointer;
+}
+#myProgressBar{
+width:80vw;
+cursor: pointer;
+}
+.songItem{
+    height:50px;
+    display:flex;
+    background-color:white;
+    
+    color:black;
+    margin:12px 0px;
+    padding:0px 6px;
+    justify-content: space-between;
+    align-items:center;
+   border-radius: 34px;
+}
+.songItem img{
+width:45px;
+margin:0px 6px;
+border-radius: 50px;
+}
+.timeStamp{
+    margin:0px 10px;
+
+   
+}
+.timedur{
+
+    padding:0px 6px;
+}
+.songItemPlay{
+    cursor:pointer;
+}
+.songItemContainer{
+    margin-top:24px;
+}
+.songInfo{
+    position: absolute;
+    bottom:2vw;
+    left:10vw;
+    font-family: 'Varela Round', sans-serif;
+   
+}
+.songInfo img{
+    opacity:0;
+    transition:opacity 0.4s ease-in;
+}
+@media only screen and (max-width:1050px)
+{
+ .container{
+  background:url('pics/spotifypic3.jpg') no-repeat center center;
+  min-height: 75vh;
+ }   
+}
+@media only screen and (max-width:450px){
+
+  
+.timeStamp{
+    display:flex;
+    flex-direction: column;
+}   
+.timeStamp i{
+    width:30%;
+    margin: 5px auto;
+}
+.songInfo{
+    position:fixed;
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items: center;
+}
+}
