@@ -15,22 +15,6 @@ element.getElementsByClassName("timedur")[0].innerText=songs[i].timeDuration;
 
 })
 //Listen to events
-masterPlay.addEventListener('click',()=>{
-    if((audioElement.paused)||(audioElement.currentTime<=0))
-    {
-        audioElement.play();
-        masterPlay.classList.remove('fa-circle-play');
-        masterPlay.classList.add('fa-circle-pause')//Here if our audio is being played then it will remove the play icon and add pause icon.It's done by simply changing the pause,play icon.
-        gif.style.opacity=1;
-    }
-    else
-    {
-        audioElement.pause();
-        masterPlay.classList.remove('fa-circle-pause');
-        masterPlay.classList.add('fa-circle-play');
-        gif.style.opacity=0;
-    }
-})
 audioElement.addEventListener('timeupdate',()=>{
     //Here we are adding an eventListener which will chekc if there is any update in time.
     //Update Sidkbar
@@ -47,6 +31,7 @@ const makeAllplays=()=>{
         element.classList.add('fa-circle-play');
     })
 }
+
 Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
     element.addEventListener('click',(e)=>{
       makeAllplays();//It's done so that all the elements have play icon and below 2 lines will add pause will add pause button to the elem. on which click event occured.
@@ -78,8 +63,34 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=>{
       
     })
 })
-
+masterPlay.addEventListener('click',()=>{
+   // console.log("HI ",audioElement.src);
+   let songcontrol=document.getElementById(songIndex);
+ // console.log("Hi ",songcontrol);
+// console.log(masterPlay.classList);
+console.log(masterPlay);
+    if((audioElement.paused)||(audioElement.currentTime<=0))
+    {
+        audioElement.play();
+        masterPlay.classList.remove('fa-circle-play');
+        masterPlay.classList.add('fa-circle-pause')//Here if our audio is being played then it will remove the play icon and add pause icon.It's done by simply changing the pause,play icon.
+        gif.style.opacity=1;
+        songcontrol.classList.remove('fa-circle-play');
+        songcontrol.classList.add('fa-circle-pause')
+    }
+    else
+    {
+        audioElement.pause();
+        masterPlay.classList.remove('fa-circle-pause');
+        masterPlay.classList.add('fa-circle-play');
+        songcontrol.classList.remove('fa-circle-pause');
+        songcontrol.classList.add('fa-circle-play')
+        gif.style.opacity=0;
+    }
+})
 document.getElementById('next').addEventListener('click',()=>{
+ 
+    
     if(songIndex>=9)
     {
         songIndex=0;
@@ -88,12 +99,17 @@ document.getElementById('next').addEventListener('click',()=>{
     {
         songIndex+=1;
     }
+    let songcontrol=document.getElementById(songIndex);
+    console.log("song idx: ",songIndex);
     audioElement.src=`songs/${songIndex}.mp3`;
     masterSongName.innerText=songs[songIndex].songName;
     audioElement.currentTime=0;
     audioElement.play();
     masterPlay.classList.remove('fa-circle-play');
     masterPlay.classList.add('fa-circle-pause');
+    makeAllplays();
+    songcontrol.classList.remove('fa-circle-play');
+   songcontrol.classList.add('fa-circle-pause');
 })
 document.getElementById('previous').addEventListener('click',()=>{
     if(songIndex<=0)
@@ -104,10 +120,15 @@ document.getElementById('previous').addEventListener('click',()=>{
     {
         songIndex-=1;
     }
+    let songcontrol=document.getElementById(songIndex);
+    console.log("song idx: ",songIndex);
     audioElement.src=`songs/${songIndex}.mp3`;
     masterSongName.innerText=songs[songIndex].songName;
     audioElement.currentTime=0;
     audioElement.play();
     masterPlay.classList.remove('fa-circle-play');
     masterPlay.classList.add('fa-circle-pause');
+    makeAllplays();
+    songcontrol.classList.remove('fa-circle-play');
+   songcontrol.classList.add('fa-circle-pause');
 })
